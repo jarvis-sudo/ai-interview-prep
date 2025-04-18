@@ -5,7 +5,7 @@ import React from 'react'
 const DisplayTechIcons = async ({techStack} : TechIconProps) => {
     const techIcons = await getTechIcons(techStack);
   return (
-    <div>
+    <div className='flex flex-row'>
         {techIcons.slice(0,3).map(({tech,url},index) => (
             <div
             key={tech}
