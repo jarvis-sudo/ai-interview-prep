@@ -1,5 +1,4 @@
 import { Button } from '@/components/ui/button';
-import { feedbackSchema } from '@/constants';
 import { getCurrentUser } from '@/lib/actions/auth.action';
 import { getFeedbackByInterviewId, getInterviewById } from '@/lib/actions/general.action';
 import dayjs from "dayjs"
@@ -43,7 +42,7 @@ const Feedback =async ({params} : RouteParams) => {
             <Image src="calender.svg" alt="calender" width={22} height={22} />
             <p>
               {feedback?.createdAt
-                ? dayjs(feedbackSchema.createdAt).format("MM DD YYYY h:mm A")
+                ? dayjs(feedback.createdAt).format("MM DD YYYY h:mm A")
                 : "N/A"}
             </p>
           </div>
@@ -90,4 +89,4 @@ const Feedback =async ({params} : RouteParams) => {
   );
 }
 
-export default page
+export default Feedback;

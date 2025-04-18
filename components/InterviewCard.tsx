@@ -82,13 +82,13 @@ const InterviewCard = async ({
             </div>
             <div>
                 <Button>
-                {/*    <Link
+                    <Link
                     href={
-                        feedback ? `/interview` : `/interview`
+                        feedback ? `/interview/${interviewId}/feedback` : `/interview/${interviewId}`
                     }
                     >
                     {feedback ? "Chceck Feedback" : "view Interview"}
-                    </Link> */}
+                    </Link> 
                 </Button>
             </div>
         </div>

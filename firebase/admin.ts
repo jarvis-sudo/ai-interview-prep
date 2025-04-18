@@ -12,11 +12,7 @@ function initFirebaseAdmin() {
     
 
     if(!apps.length) {
-        console.log("Initializing Firebase Admin SDK");
-            console.log("Project ID exists:", !!process.env.FIREBASE_PROJECT_ID);
-            console.log("Client Email exists:", !!process.env.FIREBASE_CLIENT_EMAIL);
-            console.log("Private Key exists:", !!process.env.FIREBASE_PRIVATE_KEY);
-            
+        
         initializeApp({
             credential : cert({
                 projectId:process.env.FIREBASE_PROJECT_ID,

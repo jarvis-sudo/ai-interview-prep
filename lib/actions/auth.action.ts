@@ -36,7 +36,7 @@ export async function setSessionCookie(idToken: string) {
     expiresIn: SESSION_DURATION * 1000,
   });
 
-  console.log("Setting session cookie...");
+  //console.log("Setting session cookie...");
 
   cookieStore.set("session", sessionCookie, {
     maxAge: SESSION_DURATION,
@@ -66,7 +66,7 @@ export async function signUp(params: SignUpParams) {
       success: true,
       message: "Account created Successfully. Please sign in,",
     };
-  } catch (error: any) {
+  } catch (error :any) {
     console.error("Error creating user:", error);
 
     if (error.code === "auth/email-already-exists") {
@@ -93,10 +93,10 @@ export async function signIn(params: SignInParams) {
         message: "User does not exist. create an account.",
       };
     }
-    console.log("server :setting session cookie....");
+   // console.log("server :setting session cookie....");
     await setSessionCookie(idToken);
-    console.log("server:session cookie set");
-  } catch (error: any) {
+   // console.log("server:session cookie set");
+  } catch (error:any) {
     console.log("sign-in errro", error);
 
     return {

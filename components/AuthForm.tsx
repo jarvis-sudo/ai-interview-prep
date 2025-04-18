@@ -1,5 +1,4 @@
 "use client"
-import Image from 'next/image'
 import React from 'react';
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -9,7 +8,6 @@ import {auth} from "@/firebase/client"
 import {
   Form
 } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
 import { toast } from 'sonner';
 //import { signUp } from '@/lib/actions/auth.action';
 import {

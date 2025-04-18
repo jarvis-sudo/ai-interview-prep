@@ -1,8 +1,7 @@
 import Agent from "@/components/Agent"
 import DisplayTechIcons from "@/components/DisplayTechIcons"
-import { interviewCovers } from "@/constants"
 import { getCurrentUser } from "@/lib/actions/auth.action"
-import { getInterviewById } from "@/lib/actions/general.action"
+import { getFeedbackByInterviewId, getInterviewById } from "@/lib/actions/general.action"
 import { getRandomInterviewCover } from "@/lib/utils"
 import Image from "next/image"
 import { redirect } from "next/navigation"
@@ -17,6 +16,10 @@ const InterviewDetails = async ({params} : RouteParams) => {
 
     if(!interview) redirect("/");
 
+    const feedback = await getFeedbackByInterviewId({
+        interviewId : id,
+        userId : user?.id!,
+    })
 
 
 
@@ -29,8 +32,8 @@ const InterviewDetails = async ({params} : RouteParams) => {
                     <Image
                     src={getRandomInterviewCover()}
                     alt="cover-image"
-                    width={22}
-                    height={22}
+                    width={40}
+                    height={40}
                     />
                     <h3 className="capitalize">{interview.role} Interview</h3>
                 </div>
@@ -49,7 +52,7 @@ const InterviewDetails = async ({params} : RouteParams) => {
         interviewId={id}
         type="interview"
         questions={interview.questions}
-    
+        feedbackId={feedback?.id}
         />    
         </>
     )

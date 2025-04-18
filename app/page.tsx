@@ -4,13 +4,12 @@ import { getCurrentUser } from '@/lib/actions/auth.action'
 import { getInterviewsByUserId, getLatestInterviews } from '@/lib/actions/general.action'
 import Image from 'next/image'
 import Link from 'next/link'
-import { userAgent } from 'next/server'
 import React from 'react'
 
  async function Home() {
 
     const user = await getCurrentUser();
-    console.log("userId",user?.id);
+   // console.log("userId",user?.id);
 
     const [userInterviews,allInterviews] = await Promise.all([
         getInterviewsByUserId(user?.id!),
@@ -20,8 +19,8 @@ import React from 'react'
     const hasPastInterviews = userInterviews?.length! > 0;
     const hasUpcomingInterviews = allInterviews?.length! > 0;
 
-    console.log("userInterviews",userInterviews?.length)
-    console.log("all interviews",allInterviews?.length);
+    //console.log("userInterviews",userInterviews?.length)
+   // console.log("all interviews",allInterviews?.length);
 
   return (
     <>
