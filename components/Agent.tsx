@@ -176,7 +176,13 @@ const Agent = ({
     {messages.length > 0 && (
         <div className='transcript-border'>
             <div className='transcript'> 
-                <p>{lastMessage}</p>
+                <p
+                key={lastMessage}
+                className={cn(
+                    "transition-opacity duration-500 opacity-0",
+                    "animate-fadeIn opacity-100"
+                )}
+                >{lastMessage}</p>
             </div>
         </div>
     )}
@@ -198,7 +204,7 @@ const Agent = ({
                 </span>
             </button>
         ) : (
-            <button className='btn-disconnected' onClick={() => handleDisconnect()}>End</button>
+            <button className='btn-disconnect' onClick={() => handleDisconnect()}>End</button>
         )}
     </div>
     </>
