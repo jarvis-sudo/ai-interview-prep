@@ -109,13 +109,21 @@ const Agent = ({
                 router.push("/");
             }
         }
-    })
+        if(callStatus === CallStatus.FINISHED) {
+            if(type === "generate") {
+                router.push("/");
+            }
+            else {
+                handleGenerateFeedback(messages);
+            }
+        }
+    },[messages,callStatus,feedbackId,interviewId,router,type,userId])
 
     const handleCall = async () => {
         setCallStatus(CallStatus.CONNECTING);
 
         if(type === "generate") {
-            await vapi.start(process.env.NEXT_PUBLIC_WORKFLOW_ID, {
+            await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID, {
                 variableValues : {
                     username : userName,
                     userId : userId,
@@ -211,4 +219,4 @@ const Agent = ({
 )
 }
 
-export default Agent
+export default Agent;

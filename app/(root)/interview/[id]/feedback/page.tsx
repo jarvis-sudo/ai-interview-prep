@@ -19,17 +19,17 @@ const Feedback =async ({params} : RouteParams) => {
         userId : user?.id!,
       })
   return (
-    <section>
-      <div>
-        <h1>
+    <section className='section-feedback'>
+      <div className='flex flex-row justify-center'>
+        <h1 className='text-4xl font-semibold'>
           Feedback on the interview
-          <span>Interview</span>
+          <span className='capitalize'>Interview</span>
         </h1>
       </div>
 
-      <div>
-        <div>
-          <div>
+      <div className='flex flex-row justify-center'>
+        <div className='flex flex-row gap-5'>
+          <div className='flex flex-row gap-2 items-center'>
             <Image src="/star.svg" alt="star" height={22} width={22} />
             <p>
               Overall Impression:
@@ -38,8 +38,8 @@ const Feedback =async ({params} : RouteParams) => {
             </p>
           </div>
           {/* Date */}
-          <div>
-            <Image src="calender.svg" alt="calender" width={22} height={22} />
+          <div className='flex flex-row gap-2'>
+            <Image src="/calendar.svg" alt="calender" width={22} height={22} />
             <p>
               {feedback?.createdAt
                 ? dayjs(feedback.createdAt).format("MM DD YYYY h:mm A")
@@ -52,18 +52,18 @@ const Feedback =async ({params} : RouteParams) => {
       <hr />
 
       {/* Interview breakdown */}
-      <div>
+      <div className='flex flex-col gap-4'>
         <h2>Breakdown of the Interview : </h2>
         {feedback?.categoryScores?.map((category,index) => (
-            <div>
-                <p>
+            <div key={index}>
+                <p className='font-bold'>
                     {index + 1}. {category.name} ({category.score}/100)
                 </p>
                 <p>{category.comment}</p>
             </div>
         ))}
       </div>
-      <div>
+      <div className='flex flex-col gap-3'>
         <h3>Srengths</h3>
         <ul>
             {feedback?.strengths?.map((strength,index) => (
@@ -72,16 +72,28 @@ const Feedback =async ({params} : RouteParams) => {
         </ul>
       </div>
 
-      <div>
-        <Button>
-            <Link href={"/"}>
-            <p>Back to dashboard</p>
+      <div className='flex flex-col gap-3'>
+        <h3>
+          <ul>
+            {feedback?.areasForImprovement?.map((area,index) => (
+              <li key={index}>{area}</li>
+            ))}
+          </ul>
+        </h3>
+      </div>
+
+      <div className='buttons'>
+        <Button className='btn-secondary flex-1'>
+            <Link href={"/"} className='flex w-full justify-center'>
+            <p className='text-sm font-semibold text-primary-200 text-center'>Back to dashboard</p>
             </Link>
         </Button>
 
-        <Button>
-            <Link href={`/interview/${id}`}>
-            <p>Retake Interview</p>
+        <Button className='btn-primary flex-1'>
+            <Link href={`/interview/${id}`}
+            className='flex w-full justify-center'
+            >
+            <p className='text-sm font-semibold text-black text-center'>Retake Interview</p>
             </Link>
         </Button>
       </div>
